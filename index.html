@@ -1,0 +1,1821 @@
+<html lang="en" class="scroll-smooth"><head><meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renu Nallamotu | AI &amp; Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+    :root {
+    --background: #ffffff;
+    --foreground: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --orange: #ff6b35;
+    --orange-light: #ff8c61;
+    --card-bg: #f9fafb;
+    }
+    body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+    width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    }
+    ::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+    background: var(--orange-light);
+    }
+    /* Icon Stroke Enforce */
+    .iconify {
+    stroke-width: 1.5px !important;
+    }
+    /* Dock Navigation */
+    .dock-nav {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    }
+    .dock-container {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    color: var(--foreground);
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    }
+    .dock-item:hover {
+    transform: scale(1.15);
+    background: rgba(255, 107, 53, 0.1);
+    }
+    .dock-item.active {
+    background: rgba(255, 107, 53, 0.15);
+    color: var(--orange);
+    }
+    .dock-icon {
+    font-size: 1.25rem;
+    }
+    @media (max-width: 640px) {
+    .dock-container {
+    gap: 0rem;
+    padding: 0.4rem 0.6rem;
+    }
+    .dock-item {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.65rem;
+    }
+    .dock-icon {
+    font-size: 1rem;
+    }
+    }
+    /* ========================================
+       ENHANCED BACKGROUND SYSTEM
+       ========================================
+       Premium editorial background with subtle motion:
+       1. body::before → Animated paper/noise texture
+       2. body::after  → Soft radial glow behind hero
+       3. .bg-shapes    → Floating abstract shapes (HTML container)
+       
+       All animations are extremely slow (40-60s) and respect
+       prefers-reduced-motion for accessibility.
+    */
+    
+    /* Layer 1: Animated Paper/Noise Texture */
+    body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    
+    /* Multi-layered noise simulation using CSS gradients
+       Creates organic paper-like texture without images */
+    background-image: 
+        /* Fine grain noise - primary texture layer */
+        repeating-linear-gradient(
+            0deg, 
+            transparent, 
+            transparent 1px, 
+            rgba(0, 0, 0, 0.005) 1px, 
+            rgba(0, 0, 0, 0.005) 2px
+        ),
+        repeating-linear-gradient(
+            90deg, 
+            transparent, 
+            transparent 1px, 
+            rgba(0, 0, 0, 0.005) 1px, 
+            rgba(0, 0, 0, 0.005) 2px
+        ),
+        /* Diagonal overlay for non-uniform texture */
+        repeating-linear-gradient(
+            45deg, 
+            transparent, 
+            transparent 3px, 
+            rgba(0, 0, 0, 0.003) 3px, 
+            rgba(0, 0, 0, 0.003) 4px
+        ),
+        /* Subtle warmth tint - adds premium feel */
+        linear-gradient(
+            180deg,
+            rgba(255, 249, 245, 0.015) 0%,
+            rgba(250, 245, 240, 0.008) 100%
+        );
+    
+    /* Slightly offset patterns to create organic irregularity */
+    background-size: 2px 2px, 2px 2px, 4px 4px, 100% 100%;
+    background-position: 0 0, 1px 1px, 0 0, 0 0;
+    
+    /* Subtle drifting animation - barely perceptible */
+    animation: textureDrift 60s ease-in-out infinite;
+    }
+    
+    /* Layer 2: Radial Glow Behind Hero (Enhanced) */
+    body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 600px;
+    z-index: -1;
+    pointer-events: none;
+    
+    /* Soft radial gradient emanating from hero area
+       Provides subtle depth and visual anchor */
+    background: radial-gradient(
+        ellipse 80% 60% at 50% 20%,
+        rgba(255, 107, 53, 0.012) 0%,
+        rgba(255, 140, 97, 0.006) 30%,
+        transparent 70%
+    );
+    
+    /* Very subtle pulse to add life */
+    animation: heroPulse 50s ease-in-out infinite;
+    }
+    
+    /* ========================================
+       FLOATING ABSTRACT SHAPES
+       ========================================
+       Minimal CSS-based shapes that float slowly
+       across the background. No sharp edges.
+    */
+    
+    /* Background shapes container */
+    .bg-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    }
+    
+    /* Individual floating shapes */
+    .bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.15;
+    will-change: transform;
+    }
+    
+    /* Shape 1: Soft Orange - Top Right */
+    .bg-shape:nth-child(1) {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.4) 0%, transparent 70%);
+    top: 10%;
+    right: 5%;
+    animation: float1 55s ease-in-out infinite;
+    }
+    
+    /* Shape 2: Warm Gray - Middle Left */
+    .bg-shape:nth-child(2) {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(156, 163, 175, 0.3) 0%, transparent 70%);
+    top: 40%;
+    left: 8%;
+    animation: float2 48s ease-in-out infinite;
+    animation-delay: -10s;
+    }
+    
+    /* Shape 3: Light Neutral - Bottom Right */
+    .bg-shape:nth-child(3) {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(229, 231, 235, 0.5) 0%, transparent 70%);
+    bottom: 15%;
+    right: 15%;
+    animation: float3 52s ease-in-out infinite;
+    animation-delay: -20s;
+    }
+    
+    /* ========================================
+       KEYFRAME ANIMATIONS
+       ========================================
+       All animations are extremely slow and subtle
+    */
+    
+    /* Texture drift - very subtle movement */
+    @keyframes textureDrift {
+    0%, 100% {
+        background-position: 0 0, 1px 1px, 0 0, 0 0;
+    }
+    50% {
+        background-position: 2px 2px, 3px 3px, 1px 1px, 0 0;
+    }
+    }
+    
+    /* Hero glow pulse - barely visible */
+    @keyframes heroPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 0.85;
+        transform: translateX(-50%) scale(1.02);
+    }
+    }
+    
+    /* Floating shape animations */
+    @keyframes float1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(-30px, 40px) scale(1.05);
+    }
+    66% {
+        transform: translate(20px, -30px) scale(0.95);
+    }
+    }
+    
+    @keyframes float2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(40px, -35px) scale(0.95);
+    }
+    66% {
+        transform: translate(-25px, 40px) scale(1.05);
+    }
+    }
+    
+    @keyframes float3 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(-35px, -30px) scale(1.05);
+    }
+    66% {
+        transform: translate(30px, 35px) scale(0.95);
+    }
+    }
+    
+    /* ========================================
+       ACCESSIBILITY: REDUCED MOTION SUPPORT
+       ========================================
+       Pause all background animations for users
+       who prefer reduced motion
+    */
+    @media (prefers-reduced-motion: reduce) {
+    body::before,
+    body::after,
+    .bg-shape {
+        animation: none !important;
+    }
+    
+    body::before {
+        background-position: 0 0, 1px 1px, 0 0, 0 0;
+    }
+    
+    body::after {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+    
+    .bg-shape {
+        transform: translate(0, 0) scale(1);
+    }
+    }
+    /* ========================================
+       EDITORIAL BACKGROUND SYMBOLS
+       ========================================
+       Strict layering system with content protection.
+       Symbols are edge-positioned and masked to never
+       interfere with text readability.
+    */
+    
+    /* LAYER 1: Symbol Background (z-index: 1) */
+    .symbol-background-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    }
+    
+    /* LAYER 2: Content Protection Mask (z-index: 5) */
+    .content-protection-mask {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    
+    /* Radial gradient that fades symbols near content zone */
+    background: radial-gradient(
+        ellipse 70% 100% at 50% 50%,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.3) 40%,
+        transparent 70%
+    );
+    }
+    
+    /* LAYER 3: Content (z-index: 10) - Already defined in main styles */
+    
+    /* ----------------------------------------
+       ORBIT SYMBOL - Top Right Edge
+       ----------------------------------------
+       Thin outlined circle with rotating dot.
+       Positioned at screen edge, away from content.
+    */
+    .orbit-symbol {
+    position: absolute;
+    top: 8%;
+    right: 2%;
+    width: 100px;
+    height: 100px;
+    opacity: 0.4;
+    }
+    
+    .orbit-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(26, 26, 26, 0.2);
+    border-radius: 50%;
+    }
+    
+    .orbit-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 50%;
+    transform-origin: 0 0;
+    animation: symbolOrbit 55s linear infinite;
+    }
+    
+    @keyframes symbolOrbit {
+    from {
+        transform: translate(-2.5px, -52.5px) rotate(0deg) translate(50px) rotate(0deg);
+    }
+    to {
+        transform: translate(-2.5px, -52.5px) rotate(360deg) translate(50px) rotate(-360deg);
+    }
+    }
+    
+    /* ----------------------------------------
+       ACCENT CIRCLE - Bottom Right Edge
+       ----------------------------------------
+       Muted orange circle with gentle float.
+       Stays at screen edge, fades near content.
+    */
+    .accent-circle {
+    position: absolute;
+    bottom: 12%;
+    right: 3%;
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 107, 53, 0.08);
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: symbolFloat 50s ease-in-out infinite;
+    }
+    
+    @keyframes symbolFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+    }
+    
+    /* ----------------------------------------
+       DOT NODES - Far Left Edge
+       ----------------------------------------
+       Small dots for visual balance.
+       Positioned at screen edge only.
+    */
+    .dot-node {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(26, 26, 26, 0.2);
+    border-radius: 50%;
+    }
+    
+    .dot-node-1 {
+    bottom: 30%;
+    left: 3%;
+    opacity: 0.4;
+    animation: symbolPulse 45s ease-in-out infinite;
+    }
+    
+    .dot-node-2 {
+    top: 25%;
+    left: 2.5%;
+    opacity: 0.3;
+    }
+    
+    @keyframes symbolPulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.25;
+        transform: scale(0.9);
+    }
+    }
+    
+    /* ----------------------------------------
+       RESPONSIVE ADJUSTMENTS
+       ----------------------------------------
+       Scale down or hide symbols on smaller screens
+       to preserve content readability.
+    */
+    @media (max-width: 1024px) {
+    .orbit-symbol {
+        width: 70px;
+        height: 70px;
+        opacity: 0.3;
+    }
+    
+    .orbit-dot {
+        width: 4px;
+        height: 4px;
+    }
+    
+    @keyframes symbolOrbit {
+        from {
+            transform: translate(-2px, -37px) rotate(0deg) translate(35px) rotate(0deg);
+        }
+        to {
+            transform: translate(-2px, -37px) rotate(360deg) translate(35px) rotate(-360deg);
+        }
+    }
+    
+    .accent-circle {
+        width: 50px;
+        height: 50px;
+        opacity: 0.5;
+    }
+    
+    .content-protection-mask {
+        background: radial-gradient(
+            ellipse 60% 100% at 50% 50%,
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.4) 35%,
+            transparent 65%
+        );
+    }
+    }
+    
+    @media (max-width: 768px) {
+    /* Hide symbols on mobile for pristine readability */
+    .symbol-background-layer {
+        display: none;
+    }
+    
+    .content-protection-mask {
+        display: none;
+    }
+    }
+    
+    /* ----------------------------------------
+       ACCESSIBILITY - Reduced Motion
+       ----------------------------------------
+       Pause all symbol animations for users
+       who prefer reduced motion.
+    */
+    @media (prefers-reduced-motion: reduce) {
+    .orbit-dot,
+    .accent-circle,
+    .dot-node-1 {
+        animation: none !important;
+    }
+    
+    .orbit-dot {
+        transform: translate(-2.5px, -52.5px) translate(50px, 0);
+    }
+    
+    .accent-circle {
+        transform: translateY(0);
+    }
+    
+    .dot-node-1 {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    }
+    
+    /* Ensure main content is above all background layers */
+    main {
+    position: relative;
+    z-index: 10;
+    }
+    
+    /* ========================================
+       TECH STACK LOGO STYLING
+       ========================================
+       Visual logo-based skills display with
+       hover interactions.
+    */
+    .tech-logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    }
+    
+    .tech-logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: default;
+    min-width: 85px;
+    }
+    
+    .tech-logo-item:hover {
+    border-color: var(--orange);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.15);
+    }
+    
+    .tech-logo-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    }
+    
+    .tech-logo-item:hover img {
+    transform: scale(1.1);
+    }
+    
+    .tech-logo-item span {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-align: center;
+    line-height: 1.2;
+    }
+    
+    .tech-logo-item:hover span {
+    color: var(--orange);
+    }
+    
+    /* Custom SVG icons for technologies without standard logos */
+    .tech-custom-icon {
+    width: 40px;
+    height: 40px;
+    color: #374151;
+    transition: color 0.3s ease;
+    }
+    
+    .tech-logo-item:hover .tech-custom-icon {
+    color: var(--orange);
+    }
+    
+    @media (max-width: 640px) {
+    .tech-logo-item {
+        min-width: 70px;
+        padding: 0.75rem;
+    }
+    
+    .tech-logo-item img,
+    .tech-custom-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .tech-logo-item span {
+        font-size: 0.65rem;
+    }
+    }
+    
+    /* Subtle Gradient Text */
+    .text-gradient {
+    background: linear-gradient(to bottom right, var(--orange) 30%, #ff8c61 70%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    }
+    /* Latency Game Styles */
+    .game-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f9fafb;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .game-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid #e5e7eb;
+    background: #ffffff;
+    }
+    .game-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+    }
+    .game-subtitle {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+    }
+    .game-body {
+    padding: 1.5rem;
+    max-height: 450px;
+    overflow-y: auto;
+    }
+    .control-group {
+    margin-bottom: 1.25rem;
+    }
+    .control-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: block;
+    }
+    .button-group {
+    display: flex;
+    gap: 0.5rem;
+    }
+    .game-btn {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #374151;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    }
+    .game-btn:hover {
+    border-color: #9ca3af;
+    background: #f9fafb;
+    }
+    .game-btn.active {
+    border-color: #ff6b35;
+    background: #ff6b35;
+    color: #ffffff;
+    }
+    .btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: none;
+    background: #ff6b35;
+    color: #ffffff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+    }
+    .btn-primary:hover {
+    background: #ff8c61;
+    }
+    .btn-primary:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+    }
+    .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    }
+    .metrics-grid.visible {
+    opacity: 1;
+    }
+    .metric-card {
+    padding: 0.875rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    }
+    .metric-label {
+    font-size: 0.625rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.375rem;
+    }
+    .metric-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    font-variant-numeric: tabular-nums;
+    }
+    .metric-unit {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #6b7280;
+    margin-left: 0.25rem;
+    }
+    .score-card {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    border-radius: 6px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    }
+    .score-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    }
+    .score-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+    }
+    .score-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    }
+    .score-description {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 0.25rem;
+    }
+    .loading-bar {
+    height: 3px;
+    background: #e5e7eb;
+    margin-top: 1rem;
+    border-radius: 2px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    }
+    .loading-bar.active {
+    opacity: 1;
+    }
+    .loading-progress {
+    height: 100%;
+    background: #ff6b35;
+    width: 0%;
+    transition: width 2s ease;
+    }
+    @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+    }
+    .animating .metric-value {
+    animation: pulse 0.5s ease-in-out;
+    }
+    </style></head>
+    <body class="selection:bg-orange-100 selection:text-orange-900">
+    
+    <!-- Floating Background Shapes -->
+    <div class="bg-shapes">
+        <span class="bg-shape"></span>
+        <span class="bg-shape"></span>
+        <span class="bg-shape"></span>
+    </div>
+    
+    <!-- Editorial Background Symbols (Edge-positioned, content-safe) -->
+    <div class="symbol-background-layer">
+        <!-- Orbit Symbol - Top Right Edge -->
+        <div class="orbit-symbol">
+            <div class="orbit-ring"></div>
+            <div class="orbit-dot"></div>
+        </div>
+        
+        <!-- Floating Circle - Bottom Right Edge -->
+        <div class="accent-circle"></div>
+        
+        <!-- Dot Nodes - Far Left Edge -->
+        <div class="dot-node dot-node-1"></div>
+        <div class="dot-node dot-node-2"></div>
+    </div>
+    
+    <!-- Content Protection Mask -->
+    <div class="content-protection-mask"></div>
+    
+    <!-- Dock Navigation -->
+    <nav class="dock-nav">
+        <div class="dock-container">
+            <a href="#about" class="dock-item" data-section="about">
+                <span class="dock-icon iconify" data-icon="lucide:user"></span>
+                <span>About</span>
+            </a>
+            <a href="#experience" class="dock-item" data-section="experience">
+                <span class="dock-icon iconify" data-icon="lucide:briefcase"></span>
+                <span>Experience</span>
+            </a>
+            <a href="#projects" class="dock-item" data-section="projects">
+                <span class="dock-icon iconify" data-icon="lucide:folder"></span>
+                <span>Projects</span>
+            </a>
+            <a href="#demo" class="dock-item" data-section="demo">
+                <span class="dock-icon iconify" data-icon="lucide:zap"></span>
+                <span>Demo</span>
+            </a>
+            <a href="#contact" class="dock-item" data-section="contact">
+                <span class="dock-icon iconify" data-icon="lucide:mail"></span>
+                <span>Contact</span>
+            </a>
+        </div>
+    </nav>
+    
+        <main class="max-w-4xl mx-auto px-6 pt-32 pb-24">
+            
+            <!-- Hero Section -->
+            <section class="mb-24 fade-in">
+                <div class="flex flex-col-reverse md:flex-row items-start justify-between gap-12">
+                    <div class="flex flex-col items-start gap-6 max-w-xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gray-200 bg-gray-50 text-xs font-medium text-gray-700">
+                        <span class="relative flex h-1.5 w-1.5">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-60"></span>
+                          <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-500"></span>
+                        </span>
+                        Available for Summer 2025 Internships
+                    </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-gradient leading-[1.1]">
+                            Renu Nallamotu
+                        </h1>
+                        
+                        <h2 class="text-lg sm:text-xl font-normal text-gray-900 tracking-tight">
+                            Master's in Computer Science | AI &amp; Software Engineer
+                        </h2>
+                        
+                        <p class="text-base text-gray-900 leading-relaxed">
+                            Building scalable AI systems and backend architectures. Currently architecting multi-agent workflows and LLM pipelines for <span class="text-orange-600 font-medium">BearcatGPT</span>. Passionate about bringing systems thinking to Artificial Intelligence.
+                        </p>
+    
+                        <div class="flex flex-wrap gap-3 mt-2">
+                            <a href="#projects" class="inline-flex items-center gap-2 px-5 py-2.5 bg-orange-500 text-gray-900 text-sm font-medium rounded-lg hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/50">
+                                View Projects
+                                <span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span>
+                            </a>
+                            <a href="https://github.com/NALLAMOTURENU" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-gray-200 text-gray-900 text-sm font-medium rounded-lg hover:border-orange-500 hover:text-orange-500 transition-all">
+                                <span class="iconify" data-icon="lucide:github" data-width="16"></span>
+                                GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/nallamotu-renu/" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-gray-200 text-gray-900 text-sm font-medium rounded-lg hover:border-orange-500 hover:text-orange-500 transition-all">
+                                <span class="iconify" data-icon="lucide:linkedin" data-width="16"></span>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                    
+                <!-- Profile Image -->
+                <div class="relative group">
+                    <div class="absolute -inset-0.5 rounded-lg bg-gray-200 opacity-40 blur-sm group-hover:opacity-60 transition duration-500"></div>
+                    <div class="relative">
+                        <img src="images/profile_pic.jpg" alt="Nallamotu Renu" class="relative w-32 h-32 md:w-48 md:h-48 rounded-lg object-cover border-[3px] border-white shadow-xl ring-1 ring-gray-200 transition-all duration-500">
+                    </div>
+                </div>
+                </div>
+            </section>
+    
+            <!-- About Section -->
+            <section id="about" class="mb-24 scroll-mt-20 border-t border-gray-100 pt-12">
+                <h3 class="text-sm font-medium text-gray-900 uppercase tracking-widest mb-6">About</h3>
+                <div class="prose prose-invert prose-neutral max-w-none">
+                    <p class="text-base text-gray-900 leading-7 font-light">
+                        I am currently pursuing a <strong class="text-gray-900 font-medium">Master's in Computer Science at the University of Cincinnati</strong>, where I serve as a Graduate Assistant focusing on AI Operations &amp; Strategy for the BearcatGPT initiative. My work sits at the intersection of systems engineering and generative AI, focusing on how we can move from experimental models to reliable, scalable production systems.
+                    </p>
+                    <p class="text-base text-gray-900 leading-7 font-light mt-4">
+                        My engineering philosophy centers on robustness and efficiency. Whether it's architecting multi-agent workflows for research support or building secure, offline LLM environments, I am driven by the challenge of deployment and real-world impact. I am actively seeking <strong class="text-gray-900 font-medium">Software Engineering or AI/ML Internship</strong> opportunities where I can apply my expertise in distributed systems, backend development, and large language models.
+                    </p>
+                </div>
+            </section>
+    
+            <!-- Experience Section -->
+            <section id="experience" class="mb-24 scroll-mt-20">
+                <h3 class="text-sm font-medium text-gray-900 uppercase tracking-widest mb-10">Experience</h3>
+                
+                <div class="relative border-l border-gray-200 ml-4 space-y-16">
+                    
+                    <!-- Role 1 -->
+                    <div class="relative pl-12">
+                        <!-- Logo for University of Cincinnati -->
+                        <div class="absolute -left-[20px] top-1 h-10 w-10 rounded-full border border-gray-200 bg-black p-1 flex items-center justify-center overflow-hidden z-10">
+                            <img src="images/uc-logo.jpg" alt="University of Cincinnati" class="w-full h-full object-contain opacity-80">
+                        </div>
+    
+                        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                            <h4 class="text-base font-medium text-gray-900 tracking-tight">Graduate Assistant – AI Operations &amp; Strategy</h4>
+                            <span class="text-xs font-mono text-gray-900">Present</span>
+                        </div>
+                        <p class="text-sm text-gray-900 mb-4 font-medium">BearcatGPT, University of Cincinnati</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-900 leading-relaxed">
+                                <span class="iconify mt-1 min-w-[16px] text-gray-900" data-icon="lucide:check" data-width="14"></span>
+                                <span>Architected and deployed autonomous AI agents using <span class="text-gray-900">CrewAI</span> and <span class="text-gray-900">LangChain</span> to support university research workflows.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-900 leading-relaxed">
+                                <span class="iconify mt-1 min-w-[16px] text-gray-900" data-icon="lucide:check" data-width="14"></span>
+                                <span>Designed reusable AI pipelines and MCP servers, improving operational efficiency for content summarization by over 60%.</span>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <!-- Role 2 -->
+                    <div class="relative pl-12">
+                        <!-- Logo for Previous Company -->
+                        <div class="absolute -left-[20px] top-1 h-10 w-10 rounded-full border border-gray-200 bg-white p-1 flex items-center justify-center overflow-hidden z-10">
+                            <!-- Placeholder company logo (Generic Tech) -->
+                            <img src="images/azentio.jpeg" alt="Company Logo" class="w-6 h-6 object-contain opacity-90 grayscale">
+                        </div>
+    
+                        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                            <h4 class="text-base font-medium text-gray-900 tracking-tight">Software Engineer Intern</h4>
+                            <span class="text-xs font-mono text-gray-900">Past</span>
+                        </div>
+                        <p class="text-sm text-gray-900 mb-4 font-medium">Tech Solutions Inc. (Previous Company)</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-sm text-gray-900 leading-relaxed">
+                                <span class="iconify mt-1 min-w-[16px] text-gray-900" data-icon="lucide:check" data-width="14"></span>
+                                <span>Developed a fully offline, secure local LLM system leveraging <span class="text-gray-900">Ollama</span> and <span class="text-gray-900">Docker</span> for enterprise privacy compliance.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-gray-900 leading-relaxed">
+                                <span class="iconify mt-1 min-w-[16px] text-gray-900" data-icon="lucide:check" data-width="14"></span>
+                                <span>Engineered a document analysis pipeline supporting PDF, DOCX, HTML, and Markdown, achieving 100% data isolation.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+    
+            <!-- Projects Section -->
+            <section id="projects" class="mb-24 scroll-mt-20">
+                <h3 class="text-sm font-medium text-gray-900 uppercase tracking-widest mb-10">Selected Projects</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Project 1 -->
+                    <div class="group border border-gray-200 bg-gray-50/30 rounded-lg overflow-hidden hover:border-orange-500 transition-all duration-300 flex flex-col">
+                        <div class="h-40 overflow-hidden relative border-b border-gray-200/50">
+                            <img src="images/project1.jpg" alt="Code" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-base font-medium text-gray-900 tracking-tight group-hover:text-orange-400 transition-colors">Collaborative AI Agents</h4>
+                                <a href="#" class="text-gray-900 hover:text-orange-400 transition-colors">
+                                    <span class="iconify" data-icon="lucide:github" data-width="18"></span>
+                                </a>
+                            </div>
+                            <p class="text-sm text-gray-900 mb-6 leading-relaxed flex-grow">
+                                Designed a multi-agent system where autonomous agents collaborate to solve complex tasks using hierarchical delegation.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">CrewAI</span>
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">Python</span>
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">LangChain</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Project 2 -->
+                    <div class="group border border-gray-200 bg-gray-50/30 rounded-lg overflow-hidden hover:border-orange-500 transition-all duration-300 flex flex-col">
+                        <div class="h-40 overflow-hidden relative border-b border-gray-200/50">
+                            <img src="images/chat_app.png" alt="Chat" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-base font-medium text-gray-900 tracking-tight group-hover:text-orange-400 transition-colors">ChatQuill Real-time App</h4>
+                                <a href="#" class="text-gray-900 hover:text-orange-400 transition-colors">
+                                    <span class="iconify" data-icon="lucide:github" data-width="18"></span>
+                                </a>
+                            </div>
+                            <p class="text-sm text-gray-900 mb-6 leading-relaxed flex-grow">
+                                High-concurrency chat application focusing on low latency. Implemented WebSocket protocols and persistent message queues.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">WebSockets</span>
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">React</span>
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Project 3 -->
+                    <div class="group border border-gray-200 bg-gray-50/30 rounded-lg overflow-hidden hover:border-orange-500 transition-all duration-300 flex flex-col">
+                        <div class="h-40 overflow-hidden relative border-b border-gray-200/50">
+                            <img src="images/project3.jpg" alt="Documents" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-base font-medium text-gray-900 tracking-tight group-hover:text-orange-400 transition-colors">RAG PDF Chatbot</h4>
+                                <a href="#" class="text-gray-900 hover:text-orange-400 transition-colors">
+                                    <span class="iconify" data-icon="lucide:github" data-width="18"></span>
+                                </a>
+                            </div>
+                            <p class="text-sm text-gray-900 mb-6 leading-relaxed flex-grow">
+                                Engineered a Retrieval-Augmented Generation system allowing users to query dense PDF documentation with vector search.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">RAG</span>
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">ChromaDB</span>
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">Streamlit</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Project 4 -->
+                    <div class="group border border-gray-200 bg-gray-50/30 rounded-lg overflow-hidden hover:border-orange-500 transition-all duration-300 flex flex-col">
+                        <div class="h-40 overflow-hidden relative border-b border-gray-200/50">
+                            <img src="images/project4.jpg" alt="Database" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-base font-medium text-gray-900 tracking-tight group-hover:text-orange-400 transition-colors">Text-to-SQL GenAI</h4>
+                                <a href="#" class="text-gray-900 hover:text-orange-400 transition-colors">
+                                    <span class="iconify" data-icon="lucide:github" data-width="18"></span>
+                                </a>
+                            </div>
+                            <p class="text-sm text-gray-900 mb-6 leading-relaxed flex-grow">
+                                Bridged natural language and structured data. Users can query the database using plain English via LLM-optimized SQL queries.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">SQL</span>
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">PostgreSQL</span>
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">LLMs</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                     <!-- Project 5 -->
+                     <div class="group border border-gray-200 bg-gray-50/30 rounded-lg overflow-hidden hover:border-orange-500 transition-all duration-300 flex flex-col">
+                        <div class="h-40 overflow-hidden relative border-b border-gray-200/50">
+                            <img src="images/project5.jpg" alt="Finance" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-base font-medium text-gray-900 tracking-tight group-hover:text-orange-400 transition-colors">Expense Sharing App</h4>
+                                <a href="#" class="text-gray-900 hover:text-orange-400 transition-colors">
+                                    <span class="iconify" data-icon="lucide:github" data-width="18"></span>
+                                </a>
+                            </div>
+                            <p class="text-sm text-gray-900 mb-6 leading-relaxed flex-grow">
+                                A full-stack utility application for tracking and splitting expenses. Focuses on intuitive UI and robust backend logic.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">Java</span>
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">Spring Boot</span>
+                                <span class="px-2 py-1 bg-gray-50 text-gray-900 text-[10px] uppercase font-medium rounded border border-gray-200">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </section>
+
+            <!-- Interactive Demo Section -->
+            <section id="demo" class="mb-24 scroll-mt-20">
+                <h3 class="text-sm font-medium text-gray-900 uppercase tracking-widest mb-6">Interactive Demo</h3>
+                <p class="text-sm text-gray-900 mb-6 leading-relaxed">
+                    Compare transport protocol performance under different load conditions. This simulation demonstrates realistic latency, throughput, and reliability tradeoffs.
+                </p>
+                
+                <div class="game-card">
+                    <div class="game-header">
+                        <div class="game-title">Latency Challenge</div>
+                        <div class="game-subtitle">Test different transport protocols under load</div>
+                    </div>
+
+                    <div class="game-body">
+                        <!-- Transport Method -->
+                        <div class="control-group">
+                            <label class="control-label">Transport Protocol</label>
+                            <div class="button-group">
+                                <button class="game-btn" data-transport="rest">REST</button>
+                                <button class="game-btn" data-transport="websocket">WebSocket</button>
+                                <button class="game-btn" data-transport="grpc">gRPC</button>
+                            </div>
+                        </div>
+
+                        <!-- Concurrency Level -->
+                        <div class="control-group">
+                            <label class="control-label">Concurrency Level</label>
+                            <div class="button-group">
+                                <button class="game-btn" data-concurrency="1">1</button>
+                                <button class="game-btn" data-concurrency="10">10</button>
+                                <button class="game-btn" data-concurrency="50">50</button>
+                            </div>
+                        </div>
+
+                        <!-- Send Button -->
+                        <button class="btn-primary" id="sendBtn" disabled>Send Request</button>
+
+                        <!-- Loading Bar -->
+                        <div class="loading-bar" id="loadingBar">
+                            <div class="loading-progress" id="loadingProgress"></div>
+                        </div>
+
+                        <!-- Metrics -->
+                        <div class="metrics-grid" id="metricsGrid">
+                            <div class="metric-card">
+                                <div class="metric-label">Latency</div>
+                                <div class="metric-value" id="latencyValue">
+                                    <span>—</span>
+                                    <span class="metric-unit">ms</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Throughput</div>
+                                <div class="metric-value" id="throughputValue">
+                                    <span>—</span>
+                                    <span class="metric-unit">req/s</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Packet Loss</div>
+                                <div class="metric-value" id="packetLossValue">
+                                    <span>—</span>
+                                    <span class="metric-unit">%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Score -->
+                        <div class="score-card" id="scoreCard">
+                            <div class="score-label">Efficiency Score</div>
+                            <div class="score-value" id="scoreValue">—</div>
+                            <div class="score-description" id="scoreDescription">—</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+            <!-- Skills Section -->
+            <section class="mb-24">
+                <h3 class="text-sm font-medium text-gray-900 uppercase tracking-widest mb-10">Technical Stack</h3>
+                
+                <div class="grid grid-cols-1 gap-y-10">
+                    
+                    <!-- Languages -->
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-900 mb-4 flex items-center gap-2">
+                            <span class="iconify text-gray-900" data-icon="lucide:code-2" data-width="16"></span>
+                            Languages
+                        </h4>
+                        <div class="tech-logo-grid">
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                                <span>Python</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                                <span>Java</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+                                <span>C++</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                                <span>SQL</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- AI & Machine Learning -->
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-900 mb-4 flex items-center gap-2">
+                            <span class="iconify text-gray-900" data-icon="lucide:brain-circuit" data-width="16"></span>
+                            AI &amp; Machine Learning
+                        </h4>
+                        <div class="tech-logo-grid">
+                            <div class="tech-logo-item">
+                                <svg class="tech-custom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                                <span>LLMs &amp; RAG</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <svg class="tech-custom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <circle cx="12" cy="5" r="2"/>
+                                    <circle cx="5" cy="12" r="2"/>
+                                    <circle cx="19" cy="12" r="2"/>
+                                    <circle cx="12" cy="19" r="2"/>
+                                    <path d="M12 7v3M10 12H7M17 12h-3M12 15v2"/>
+                                </svg>
+                                <span>Multi-Agent<br>Systems</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+                                <span>TensorFlow</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch">
+                                <span>PyTorch</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <svg class="tech-custom-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                                </svg>
+                                <span>Hugging Face</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Frameworks -->
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-900 mb-4 flex items-center gap-2">
+                            <span class="iconify text-gray-900" data-icon="lucide:layers" data-width="16"></span>
+                            Frameworks
+                        </h4>
+                        <div class="tech-logo-grid">
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot">
+                                <span>Spring Boot</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask">
+                                <span>Flask</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <svg class="tech-custom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M7 7h10M7 12h10M7 17h7"/>
+                                </svg>
+                                <span>LangChain</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <svg class="tech-custom-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                                <span>Streamlit</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Data & Cloud -->
+                    <div>
+                        <h4 class="text-sm font-medium text-gray-900 mb-4 flex items-center gap-2">
+                            <span class="iconify text-gray-900" data-icon="lucide:database" data-width="16"></span>
+                            Data &amp; Cloud
+                        </h4>
+                        <div class="tech-logo-grid">
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+                                <span>PostgreSQL</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+                                <span>MongoDB</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <svg class="tech-custom-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M8 12h8M12 8v8"/>
+                                </svg>
+                                <span>ChromaDB</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
+                                <span>AWS Bedrock</span>
+                            </div>
+                            <div class="tech-logo-item">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                                <span>Docker</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </section>
+    
+            <!-- Education & Publications -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
+                
+                <!-- Education -->
+                <div>
+                    <h3 class="text-sm font-medium text-gray-900 uppercase tracking-widest mb-6">Education</h3>
+                    <div class="space-y-8">
+                        <div class="relative pl-6 border-l border-gray-200">
+                            <div class="flex justify-between items-baseline mb-1">
+                                <h4 class="text-sm font-medium text-gray-900">University of Cincinnati</h4>
+                                <span class="text-xs text-gray-900">2025 – Present</span>
+                            </div>
+                            <p class="text-sm text-gray-900">MS in Computer Science</p>
+                        </div>
+                        <div class="relative pl-6 border-l border-gray-200">
+                            <div class="flex justify-between items-baseline mb-1">
+                                <h4 class="text-sm font-medium text-gray-900">KL University</h4>
+                                <span class="text-xs text-gray-900">GPA: 9.70/10</span>
+                            </div>
+                            <p class="text-sm text-gray-900">B.Tech in Computer Science</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Publications & Certs -->
+                <div>
+                    <h3 class="text-sm font-medium text-gray-900 uppercase tracking-widest mb-6">Publications &amp; Certs</h3>
+                    <div class="space-y-6">
+                        <a href="#" class="block group p-4 border border-gray-200 rounded-lg hover:bg-gray-50/50 transition-colors">
+                            <div class="flex items-start gap-3">
+                                <span class="iconify mt-0.5 min-w-[16px] text-blue-400" data-icon="lucide:file-text" data-width="16"></span>
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-900 group-hover:text-orange-500 transition-colors">AI-Driven Comparative Analysis for Early Intervention</h4>
+                                    <p class="text-xs text-gray-900 mt-1">Research Paper • ICEAT-2024</p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="flex items-start gap-3 p-4 border border-gray-200 rounded-lg">
+                            <span class="iconify mt-0.5 min-w-[16px] text-yellow-500" data-icon="lucide:award" data-width="16"></span>
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-900">AWS Certified Cloud Practitioner</h4>
+                                <p class="text-xs text-gray-900 mt-1">Amazon Web Services</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    
+        <!-- Contact Form Section -->
+        <section id="contact" class="mb-24 scroll-mt-20">
+            <h3 class="text-sm font-medium text-gray-900 uppercase tracking-widest mb-6">Get In Touch</h3>
+            <p class="text-sm text-gray-900 mb-8 leading-relaxed max-w-xl">
+                Looking for a systems-oriented engineer who understands both AI and production infrastructure? Let's talk.
+            </p>
+            
+            <div class="max-w-xl">
+                <form id="contactForm" class="space-y-5">
+                    <div>
+                        <label for="name" class="block text-xs font-medium text-gray-900 uppercase tracking-wider mb-2">Name</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm transition-all">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-xs font-medium text-gray-900 uppercase tracking-wider mb-2">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm transition-all">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-xs font-medium text-gray-900 uppercase tracking-wider mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm resize-none transition-all"></textarea>
+                    </div>
+                    <button type="submit" class="w-full px-6 py-3 bg-orange-500 text-white text-sm font-medium rounded-lg hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/30">
+                        Send Message
+                    </button>
+                    <div id="formFeedback" class="hidden text-sm text-center py-2 px-4 rounded-lg"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t-2 border-gray-100 pt-16 pb-12 mt-12">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+                <div class="max-w-sm">
+                    <h2 class="text-xl font-medium text-gray-900 tracking-tight mb-3">Renu Nallamotu</h2>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Building production-grade AI systems. Currently architecting autonomous agents and LLM infrastructure at University of Cincinnati.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col items-start md:items-end gap-4">
+                    <div class="flex gap-5">
+                        <a href="https://github.com/NALLAMOTURENU" target="_blank" class="text-gray-600 hover:text-orange-500 transition-colors" aria-label="GitHub">
+                            <span class="iconify" data-icon="lucide:github" data-width="20"></span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/nallamotu-renu/" target="_blank" class="text-gray-600 hover:text-orange-500 transition-colors" aria-label="LinkedIn">
+                            <span class="iconify" data-icon="lucide:linkedin" data-width="20"></span>
+                        </a>
+                        <a href="mailto:renunallamotu@gmail.com" class="text-gray-600 hover:text-orange-500 transition-colors" aria-label="Email">
+                            <span class="iconify" data-icon="lucide:mail" data-width="20"></span>
+                        </a>
+                    </div>
+                    <p class="text-xs text-gray-500">Open to Summer 2025 Opportunities</p>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-100 text-xs text-gray-500 text-center">
+                © 2026 Nallamotu Renu. All rights reserved.
+            </div>
+        </footer>
+    
+        </main>
+    
+        <!-- Latency Game Script -->
+        <script>
+        // ========================================
+        // GAME STATE
+        // ========================================
+        const gameState = {
+            transport: null,
+            concurrency: null
+        };
+
+        // ========================================
+        // SIMULATION LOGIC
+        // ========================================
+        
+        /**
+         * Calculate realistic metrics based on transport method and concurrency
+         * Returns: { latency, throughput, packetLoss }
+         */
+        function simulateMetrics(transport, concurrency) {
+            // Base metrics for each transport at concurrency = 1
+            const baseMetrics = {
+                rest: {
+                    latency: 95,
+                    throughput: 12,
+                    packetLoss: 1.2
+                },
+                websocket: {
+                    latency: 45,
+                    throughput: 28,
+                    packetLoss: 0.5
+                },
+                grpc: {
+                    latency: 25,
+                    throughput: 45,
+                    packetLoss: 0.2
+                }
+            };
+
+            // Degradation factors per transport as concurrency increases
+            const degradationFactors = {
+                rest: {
+                    latencyMult: 1.8,    // High latency increase
+                    throughputMult: 0.6, // Poor throughput scaling
+                    packetLossMult: 2.5  // Higher packet loss
+                },
+                websocket: {
+                    latencyMult: 1.3,    // Moderate latency increase
+                    throughputMult: 0.85,// Good throughput scaling
+                    packetLossMult: 1.5  // Moderate packet loss
+                },
+                grpc: {
+                    latencyMult: 1.15,   // Low latency increase
+                    throughputMult: 0.95,// Excellent throughput scaling
+                    packetLossMult: 1.2  // Low packet loss increase
+                }
+            };
+
+            const base = baseMetrics[transport];
+            const factors = degradationFactors[transport];
+
+            // Calculate concurrency impact (logarithmic scale)
+            const concurrencyFactor = Math.log10(concurrency + 1);
+
+            // Calculate metrics with deterministic formulas
+            const latency = Math.round(
+                base.latency * (1 + concurrencyFactor * factors.latencyMult)
+            );
+
+            const throughput = Math.round(
+                base.throughput * concurrency * factors.throughputMult / (1 + concurrencyFactor * 0.3)
+            );
+
+            const packetLoss = (
+                base.packetLoss * (1 + concurrencyFactor * factors.packetLossMult)
+            ).toFixed(2);
+
+            return { latency, throughput, packetLoss: parseFloat(packetLoss) };
+        }
+
+        /**
+         * Calculate efficiency score (0-100)
+         * Higher is better. Factors: low latency, high throughput, low packet loss
+         */
+        function calculateScore(latency, throughput, packetLoss, concurrency) {
+            // Normalize metrics (lower latency is better, higher throughput is better, lower loss is better)
+            const latencyScore = Math.max(0, 100 - (latency / 3));
+            const throughputScore = Math.min(100, throughput * 0.5);
+            const packetLossScore = Math.max(0, 100 - (packetLoss * 10));
+            const concurrencyBonus = concurrency * 0.5;
+
+            // Weighted average
+            const score = (
+                latencyScore * 0.35 +
+                throughputScore * 0.40 +
+                packetLossScore * 0.25 +
+                concurrencyBonus
+            );
+
+            return Math.min(100, Math.round(score));
+        }
+
+        /**
+         * Get score description based on score value
+         */
+        function getScoreDescription(score) {
+            if (score >= 90) return 'Excellent';
+            if (score >= 75) return 'Very Good';
+            if (score >= 60) return 'Good';
+            if (score >= 45) return 'Fair';
+            return 'Needs Optimization';
+        }
+
+        // ========================================
+        // UI LOGIC
+        // ========================================
+
+        /**
+         * Update button selection state
+         */
+        function updateButtonState(group, value) {
+            group.querySelectorAll('.game-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            group.querySelector(`[data-${group.dataset.type}="${value}"]`)?.classList.add('active');
+        }
+
+        /**
+         * Check if game is ready to run
+         */
+        function updateSendButton() {
+            const sendBtn = document.getElementById('sendBtn');
+            sendBtn.disabled = !(gameState.transport && gameState.concurrency);
+        }
+
+        /**
+         * Animate metric value change
+         */
+        function animateMetric(element, value) {
+            element.closest('.metric-card').classList.add('animating');
+            setTimeout(() => {
+                element.innerHTML = value;
+                element.closest('.metric-card').classList.remove('animating');
+            }, 100);
+        }
+
+        /**
+         * Run the simulation
+         */
+        async function runSimulation() {
+            const sendBtn = document.getElementById('sendBtn');
+            const loadingBar = document.getElementById('loadingBar');
+            const loadingProgress = document.getElementById('loadingProgress');
+            const metricsGrid = document.getElementById('metricsGrid');
+            const scoreCard = document.getElementById('scoreCard');
+
+            // Disable button
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Running...';
+
+            // Show loading bar
+            loadingBar.classList.add('active');
+            loadingProgress.style.width = '0%';
+
+            // Hide previous results
+            metricsGrid.classList.remove('visible');
+            scoreCard.classList.remove('visible');
+
+            // Animate loading bar
+            setTimeout(() => {
+                loadingProgress.style.width = '100%';
+            }, 50);
+
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Calculate metrics
+            const { latency, throughput, packetLoss } = simulateMetrics(
+                gameState.transport,
+                gameState.concurrency
+            );
+
+            const score = calculateScore(latency, throughput, packetLoss, gameState.concurrency);
+            const description = getScoreDescription(score);
+
+            // Update metrics with animation
+            animateMetric(
+                document.getElementById('latencyValue'),
+                `<span>${latency}</span><span class="metric-unit">ms</span>`
+            );
+            animateMetric(
+                document.getElementById('throughputValue'),
+                `<span>${throughput}</span><span class="metric-unit">req/s</span>`
+            );
+            animateMetric(
+                document.getElementById('packetLossValue'),
+                `<span>${packetLoss}</span><span class="metric-unit">%</span>`
+            );
+
+            // Show metrics
+            metricsGrid.classList.add('visible');
+
+            // Update and show score
+            document.getElementById('scoreValue').textContent = score;
+            document.getElementById('scoreDescription').textContent = description;
+            
+            setTimeout(() => {
+                scoreCard.classList.add('visible');
+            }, 300);
+
+            // Hide loading bar
+            loadingBar.classList.remove('active');
+            loadingProgress.style.width = '0%';
+
+            // Re-enable button
+            sendBtn.disabled = false;
+            sendBtn.textContent = 'Send Request';
+        }
+
+        // ========================================
+        // EVENT LISTENERS
+        // ========================================
+
+        // Transport selection
+        document.querySelectorAll('[data-transport]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                gameState.transport = btn.dataset.transport;
+                updateButtonState(btn.parentElement, btn.dataset.transport);
+                updateSendButton();
+            });
+        });
+
+        // Concurrency selection
+        document.querySelectorAll('[data-concurrency]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                gameState.concurrency = parseInt(btn.dataset.concurrency);
+                updateButtonState(btn.parentElement, btn.dataset.concurrency);
+                updateSendButton();
+            });
+        });
+
+        // Send button
+        document.getElementById('sendBtn').addEventListener('click', runSimulation);
+
+        // Set data-type attributes for button groups (for updateButtonState function)
+        document.querySelectorAll('.button-group').forEach((group, index) => {
+            group.dataset.type = index === 0 ? 'transport' : 'concurrency';
+        });
+
+        // ========================================
+        // DOCK NAVIGATION ACTIVE STATE
+        // ========================================
+        const sections = document.querySelectorAll('section[id]');
+        const dockItems = document.querySelectorAll('.dock-item');
+
+        function updateActiveSection() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            dockItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.section === current) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveSection);
+        window.addEventListener('load', updateActiveSection);
+
+        // ========================================
+        // CONTACT FORM SUBMISSION
+        // ========================================
+        const contactForm = document.getElementById('contactForm');
+        const formFeedback = document.getElementById('formFeedback');
+        
+        // Configure API URL (change this for production)
+        const API_URL = 'http://localhost:3000/api/contact';
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            formFeedback.classList.add('hidden');
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Success
+                    formFeedback.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+                    formFeedback.className = 'text-sm text-center py-2 px-4 rounded-lg bg-green-50 text-green-700 border border-green-200';
+                    formFeedback.classList.remove('hidden');
+                    contactForm.reset();
+                } else {
+                    throw new Error(data.error || 'Failed to send message');
+                }
+            } catch (error) {
+                // Error
+                formFeedback.textContent = error.message || 'Failed to send message. Please try again or email me directly.';
+                formFeedback.className = 'text-sm text-center py-2 px-4 rounded-lg bg-red-50 text-red-700 border border-red-200';
+                formFeedback.classList.remove('hidden');
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+        </script>
+    
+    </body></html>
